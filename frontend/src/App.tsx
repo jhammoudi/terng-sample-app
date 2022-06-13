@@ -1,26 +1,50 @@
-import React from 'react';
-import logo from './logo.svg';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Link
+} from "react-router-dom";
+
 import './App.css';
 
-function App() {
+import Books from './components/Books';
+import Users from './components/Users'
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <BrowserRouter>
+      <>
+        <Nav />
+        <Routes>
+          <Route path="/books" element={<Books />} />
+          <Route path="/users" element={<Users />} />
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </>
+    </BrowserRouter>
+  )
 }
 
-export default App;
+const Home = () => {
+  return (
+    <>
+      <h1>GraphQL Demo</h1>
+      <h2>Use the above links to explore the Books and Users sample data.</h2>
+      <h2>Visit <a target="_blank" rel="noopener noreferrer" href={process.env.REACT_APP_GRAPHQL_URL}>/graphql</a> to explore the GraphQL API</h2>
+      <p>Developed by Jihad Hammoudi</p>
+    </>
+  )
+}
+
+const Nav = () => {
+  return (
+    <nav>
+      <Link to="/">Home</Link>
+      <Link to="/books">Books</Link>
+      <Link to="/users">GitHub Users</Link>
+      <hr />
+    </nav>
+  )
+}
+
+export default App
