@@ -16,6 +16,7 @@ const app = express();
 app.set("port", process.env.PORT || 3001);
 
 // Middleware
+app.use(express.static(path.join(__dirname, "./frontend")));
 app.use(cors());
 app.use(compression()); // compress response bodies
 app.use(express.json()); // support JSON-encoded bodies
@@ -29,7 +30,14 @@ app.use(
 setupApolloServer(app);
 
 // Routes
-app.use("/", express.static(path.join(__dirname, "./frontend")));
 app.use("/api", router);
+
+app.get("/*", function (req, res) {
+  res.sendFile(path.join(__dirname, "./frontend/index.html"), function (err) {
+    if (err) {
+      res.status(500).send(err);
+    }
+  });
+});
 
 export default app;

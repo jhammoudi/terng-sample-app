@@ -6,7 +6,7 @@ const GET_BOOKS = gql`
         id
         title
         author
-        year
+        # year
     }
   }
 `;
