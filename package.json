@@ -1,7 +1,7 @@
 {
-  "name": "tern-starter-kit",
+  "name": "terng-sample-app",
   "version": "1.0.0",
-  "description": "A starter web app, built using Typescript, Express js, React js, Node js",
+  "description": "A sample web app, built using Typescript, Express js, React js, Node js, and GraphQL",
   "scripts": {
     "start": "NODE_ENV=production node build/index.js",
     "start-dev": "concurrently -k npm:start-dev:*",
