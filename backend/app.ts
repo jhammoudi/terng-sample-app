@@ -32,12 +32,13 @@ setupApolloServer(app);
 // Routes
 app.use("/api", router);
 
-app.get("/*", function (req, res) {
-  res.sendFile(path.join(__dirname, "./frontend/index.html"), function (err) {
-    if (err) {
-      res.status(500).send(err);
-    }
+process.env.NODE_ENV === "production" &&
+  app.get("/*", function (req, res) {
+    res.sendFile(path.join(__dirname, "./frontend/index.html"), function (err) {
+      if (err) {
+        res.status(500).send(err);
+      }
+    });
   });
-});
 
 export default app;

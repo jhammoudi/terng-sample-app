@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A starter web app, built using Typescript, Express js, React js, Node js",
   "scripts": {
-    "start": "node build/index.js",
+    "start": "NODE_ENV=production node build/index.js",
     "start-dev": "concurrently -k npm:start-dev:*",
     "start-dev:ui": "npm start --prefix frontend",
     "start-dev:server": "nodemon backend/index.ts",
